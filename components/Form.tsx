@@ -41,10 +41,12 @@ const Form = <T extends object>({
             title={title}
             isShown={open}
             onCloseComplete={toggle}
+            confirmLabel="确定"
             onConfirm={close => {
               props.submitForm();
               close();
             }}
+            cancelLabel="取消"
             onCancel={close => {
               props.resetForm();
               close();

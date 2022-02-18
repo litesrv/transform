@@ -150,6 +150,7 @@ declare module "evergreen-ui" {
     disabled?: boolean;
     capture?: boolean;
     height?: number | string;
+    placeholder?: string;
     onChange?: React.EventHandler;
     onBlur?: () => void;
   }

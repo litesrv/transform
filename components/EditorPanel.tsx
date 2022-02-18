@@ -96,7 +96,7 @@ export default function EditorPanel({
           onClick={_toggleSettingsDialog}
           height={28}
         >
-          Settings
+          转换配置
         </Button>
 
         {settingElement({
@@ -125,14 +125,14 @@ export default function EditorPanel({
     disabled: !editable,
     accept: acceptFiles,
     onDropRejected: () =>
-      toaster.danger("This file type is not supported.", {
+      toaster.danger("文件类型不支持.", {
         id
       })
   });
 
   const copyValue = useCallback(() => {
     copy(value);
-    toaster.success("Copied to clipboard.", {
+    toaster.success("复制成功.", {
       id
     });
   }, [value]);
@@ -191,19 +191,20 @@ export default function EditorPanel({
                 <FilePicker
                   width={"100%"}
                   name="filepicker"
+                  placeholder="选择文件"
                   onChange={files => onFilePicked(files, close)}
                   accept={acceptFiles}
                 />
 
                 <Heading paddingY={10} size={200}>
-                  OR
+                  或者
                 </Heading>
 
                 <Pane display="flex" flexDirection="row">
                   <TextInput
                     borderBottomRightRadius={0}
                     borderTopRightRadius={0}
-                    placeholder="Enter URL"
+                    placeholder="输入文件地址"
                     onChange={(e: HTMLInputEvent) =>
                       setFetchingUrl(e.target.value)
                     }
@@ -214,21 +215,21 @@ export default function EditorPanel({
                     borderTopLeftRadius={0}
                     onClick={() => fetchFile(close)}
                   >
-                    Fetch URL
+                    获取文件
                   </Button>
                 </Pane>
               </Pane>
             )}
             shouldCloseOnExternalClick
           >
-            <Tooltip content="Load File">
+            <Tooltip content="加载文件">
               <IconButton height={28} marginRight={10} icon="upload" />
             </Tooltip>
           </Popover>
         )}
 
         {hasClear && (
-          <Tooltip content="Clear">
+          <Tooltip content="清空">
             <IconButton
               height={28}
               icon="trash"
@@ -261,7 +262,7 @@ export default function EditorPanel({
             onClick={copyValue}
             height={28}
           >
-            Copy
+            复制
           </Button>
         )}
       </Pane>
